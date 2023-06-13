@@ -34,6 +34,7 @@ def unknown_command(update: Update, context: CallbackContext):
 def help(update: Update, context: CallbackContext):
     update.message.reply_text("this is help command")
 
+
 # Define a function to handle the /status command
 def status(update, context):
     # Get system information using psutil and platform
@@ -49,6 +50,7 @@ def status(update, context):
 
     # Send the system information to the user
     update.message.reply_text(message)
+
 
 def unknown_text(update: Update, context: CallbackContext):
     print(config("user"))
@@ -117,6 +119,7 @@ updater.dispatcher.add_handler(CommandHandler("help", help))
 updater.dispatcher.add_handler(CommandHandler("keyboard", keyboard))
 updater.dispatcher.add_handler(CommandHandler("launch", launch))
 updater.dispatcher.add_handler(CommandHandler("volume", volume))
+
 updater.dispatcher.add_handler(CommandHandler('status', status))
 updater.dispatcher.add_handler(MessageHandler(Filters.command, unknown_command))
 updater.dispatcher.add_handler(MessageHandler(Filters.text, unknown_text))
@@ -124,3 +127,4 @@ updater.dispatcher.add_handler(MessageHandler(Filters.text, unknown_text))
 updater.start_polling()
 print("bot is working")
 updater.idle()
+
